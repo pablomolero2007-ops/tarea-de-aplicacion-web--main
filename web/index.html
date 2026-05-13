@@ -13,8 +13,8 @@
         <div class="nav-content">
             <h1 class="logo">AutoTracker</h1>
             <ul class="nav-links">
-                <li><a href="#listado" class="active">Listado</a></li>
-                <li><a href="#nuevo">Añadir Coche</a></li>
+                <li><a href="index.html" class="active">Listado</a></li>
+                <li><a href="nuevo_coche.html">Añadir Coche</a></li>
             </ul>
         </div>
     </nav>
@@ -126,71 +126,7 @@
             </div>
         </section>
 
-        <!-- Section: Formulario -->
-        <section id="nuevo" class="card mt-8">
-            <div class="section-header">
-                <h3>Añadir Nuevo Coche</h3>
-                <p>Completa el registro para añadir un vehículo de alta gama al sistema.</p>
-            </div>
-            <form class="car-form">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" placeholder="Ej. Mustang GT" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="marca">Marca</label>
-                        <input type="text" id="marca" name="marca" placeholder="Ej. Ford" required>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="modelo">Modelo</label>
-                        <input type="text" id="modelo" name="modelo" placeholder="Ej. Fastback" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="anio">Año</label>
-                        <input type="number" id="anio" name="anio" min="1886" max="2100" placeholder="Ej. 2024" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="color">Color</label>
-                        <input type="text" id="color" name="color" placeholder="Ej. Rojo Pasión" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="precio">Precio ($)</label>
-                        <input type="number" id="precio" name="precio" placeholder="Ej. 55000" min="0" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="pais">País de Origen</label>
-                        <select id="pais" name="pais" required>
-                            <option value="">Selecciona un país...</option>
-                            <option value="Alemania">Alemania</option>
-                            <option value="Corea del Sur">Corea del Sur</option>
-                            <option value="Estados Unidos">Estados Unidos</option>
-                            <option value="Francia">Francia</option>
-                            <option value="Italia">Italia</option>
-                            <option value="Japón">Japón</option>
-                            <option value="Reino Unido">Reino Unido</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="imagen">URL de la Imagen</label>
-                        <input type="url" id="imagen" name="imagen" placeholder="https://ejemplo.com/coche.jpg">
-                    </div>
-                </div>
-
-                <div class="form-actions">
-                    <button type="reset" class="btn btn-secondary">Limpiar</button>
-                    <button type="submit" class="btn btn-primary">Registrar Coche</button>
-                </div>
-            </form>
-        </section>
     </main>
 
     <script>
@@ -200,7 +136,16 @@
                 card.addEventListener('click', (e) => {
                     // Evitar que el click en los botones de acción expanda/contraiga la tarjeta
                     if (!e.target.closest('button')) {
-                        card.classList.toggle('expanded');
+                        // Comprobar si esta carta ya está abierta para cerrarla, si no, cerramos las de más y abrimos
+                        const isExpanded = card.classList.contains('expanded');
+                        
+                        // Cerramos todas
+                        carCards.forEach(c => c.classList.remove('expanded'));
+                        
+                        // Si no estaba abierta, la abrimos
+                        if (!isExpanded) {
+                            card.classList.add('expanded');
+                        }
                     }
                 });
             });
