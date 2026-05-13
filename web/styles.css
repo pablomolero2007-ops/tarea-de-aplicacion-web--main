@@ -148,6 +148,7 @@ body {
     box-shadow: var(--shadow-soft), var(--shadow-inner);
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 .car-card:hover {
@@ -179,12 +180,9 @@ body {
 }
 
 .car-card-header {
-    margin-bottom: 1.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--glass-border);
-    padding-bottom: 1rem;
 }
 
 .car-card-header h4 {
@@ -204,6 +202,21 @@ body {
     padding: 0.35rem 0.85rem;
     border-radius: 999px;
     box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+.car-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.car-card.expanded .car-details {
+    max-height: 1000px;
+    opacity: 1;
+    border-top: 1px solid var(--glass-border);
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
 }
 
 .car-info {

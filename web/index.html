@@ -41,21 +41,23 @@
                             <h4>Mustang GT</h4>
                             <span class="car-tag">2024</span>
                         </div>
-                        <div class="car-info">
-                            <p><strong>Marca:</strong> Ford</p>
-                            <p><strong>Modelo:</strong> Fastback</p>
-                            <p><strong>Precio:</strong> <span class="price">$55,000</span></p>
-                            <div class="color-info">
-                                <strong>Color:</strong>
-                                <div class="color-value">
-                                    <span class="color-badge" style="background-color: #dc2626;"></span> Rojo
+                        <div class="car-details">
+                            <div class="car-info">
+                                <p><strong>Marca:</strong> Ford</p>
+                                <p><strong>Modelo:</strong> Fastback</p>
+                                <p><strong>Precio:</strong> <span class="price">$55,000</span></p>
+                                <div class="color-info">
+                                    <strong>Color:</strong>
+                                    <div class="color-value">
+                                        <span class="color-badge" style="background-color: #dc2626;"></span> Rojo
+                                    </div>
                                 </div>
+                                <p><strong>Origen:</strong> Estados Unidos</p>
                             </div>
-                            <p><strong>Origen:</strong> Estados Unidos</p>
-                        </div>
-                        <div class="car-card-actions">
-                            <button class="btn btn-secondary btn-sm" title="Editar">✏️ Editar</button>
-                            <button class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                            <div class="car-card-actions">
+                                <button class="btn btn-secondary btn-sm" title="Editar">✏️ Editar</button>
+                                <button class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -70,21 +72,23 @@
                             <h4>911 Carrera</h4>
                             <span class="car-tag">2023</span>
                         </div>
-                        <div class="car-info">
-                            <p><strong>Marca:</strong> Porsche</p>
-                            <p><strong>Modelo:</strong> 992</p>
-                            <p><strong>Precio:</strong> <span class="price">$114,400</span></p>
-                            <div class="color-info">
-                                <strong>Color:</strong>
-                                <div class="color-value">
-                                    <span class="color-badge" style="background-color: #2563eb;"></span> Azul
+                        <div class="car-details">
+                            <div class="car-info">
+                                <p><strong>Marca:</strong> Porsche</p>
+                                <p><strong>Modelo:</strong> 992</p>
+                                <p><strong>Precio:</strong> <span class="price">$114,400</span></p>
+                                <div class="color-info">
+                                    <strong>Color:</strong>
+                                    <div class="color-value">
+                                        <span class="color-badge" style="background-color: #2563eb;"></span> Azul
+                                    </div>
                                 </div>
+                                <p><strong>Origen:</strong> Alemania</p>
                             </div>
-                            <p><strong>Origen:</strong> Alemania</p>
-                        </div>
-                        <div class="car-card-actions">
-                            <button class="btn btn-secondary btn-sm" title="Editar">✏️ Editar</button>
-                            <button class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                            <div class="car-card-actions">
+                                <button class="btn btn-secondary btn-sm" title="Editar">✏️ Editar</button>
+                                <button class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -99,21 +103,23 @@
                             <h4>Civic Type R</h4>
                             <span class="car-tag">2024</span>
                         </div>
-                        <div class="car-info">
-                            <p><strong>Marca:</strong> Honda</p>
-                            <p><strong>Modelo:</strong> Hatchback</p>
-                            <p><strong>Precio:</strong> <span class="price">$44,795</span></p>
-                            <div class="color-info">
-                                <strong>Color:</strong>
-                                <div class="color-value">
-                                    <span class="color-badge" style="background-color: #f8fafc; border: 1px solid #cbd5e1;"></span> Blanco
+                        <div class="car-details">
+                            <div class="car-info">
+                                <p><strong>Marca:</strong> Honda</p>
+                                <p><strong>Modelo:</strong> Hatchback</p>
+                                <p><strong>Precio:</strong> <span class="price">$44,795</span></p>
+                                <div class="color-info">
+                                    <strong>Color:</strong>
+                                    <div class="color-value">
+                                        <span class="color-badge" style="background-color: #f8fafc; border: 1px solid #cbd5e1;"></span> Blanco
+                                    </div>
                                 </div>
+                                <p><strong>Origen:</strong> Japón</p>
                             </div>
-                            <p><strong>Origen:</strong> Japón</p>
-                        </div>
-                        <div class="car-card-actions">
-                            <button class="btn btn-secondary btn-sm" title="Editar">✏️ Editar</button>
-                            <button class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                            <div class="car-card-actions">
+                                <button class="btn btn-secondary btn-sm" title="Editar">✏️ Editar</button>
+                                <button class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                            </div>
                         </div>
                     </div>
                 </article>
@@ -187,5 +193,18 @@
         </section>
     </main>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carCards = document.querySelectorAll('.car-card');
+            carCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    // Evitar que el click en los botones de acción expanda/contraiga la tarjeta
+                    if (!e.target.closest('button')) {
+                        card.classList.toggle('expanded');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

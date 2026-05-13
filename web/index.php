@@ -107,21 +107,23 @@ $coches = $conn->query($sql);
                                     <h4><?php echo htmlspecialchars($row['modelo']); ?></h4>
                                     <span class="car-tag"><?php echo htmlspecialchars($row['anio']); ?></span>
                                 </div>
-                                <div class="car-info">
-                                    <p><strong>Marca:</strong> <?php echo htmlspecialchars($row['marca_nombre']); ?></p>
-                                    <p><strong>Modelo:</strong> <?php echo htmlspecialchars($row['modelo']); ?></p>
-                                    <p><strong>Precio:</strong> <span class="price">$<?php echo number_format($row['precio'], 2); ?></span></p>
-                                    <div class="color-info">
-                                        <strong>Color:</strong>
-                                        <div class="color-value">
-                                            <span class="color-badge" style="background-color: <?php echo $color_badge; ?>; border: 1px solid #cbd5e1;"></span> <?php echo htmlspecialchars($row['color']); ?>
+                                <div class="car-details">
+                                    <div class="car-info">
+                                        <p><strong>Marca:</strong> <?php echo htmlspecialchars($row['marca_nombre']); ?></p>
+                                        <p><strong>Modelo:</strong> <?php echo htmlspecialchars($row['modelo']); ?></p>
+                                        <p><strong>Precio:</strong> <span class="price">$<?php echo number_format($row['precio'], 2); ?></span></p>
+                                        <div class="color-info">
+                                            <strong>Color:</strong>
+                                            <div class="color-value">
+                                                <span class="color-badge" style="background-color: <?php echo $color_badge; ?>; border: 1px solid #cbd5e1;"></span> <?php echo htmlspecialchars($row['color']); ?>
+                                            </div>
                                         </div>
+                                        <p><strong>Origen:</strong> <?php echo htmlspecialchars($row['pais_origen']); ?></p>
                                     </div>
-                                    <p><strong>Origen:</strong> <?php echo htmlspecialchars($row['pais_origen']); ?></p>
-                                </div>
-                                <div class="car-card-actions">
-                                    <button class="btn btn-secondary btn-sm" title="Editar">✏️ Editar</button>
-                                    <button class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                                    <div class="car-card-actions">
+                                        <button class="btn btn-secondary btn-sm" title="Editar">✏️ Editar</button>
+                                        <button class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                                    </div>
                                 </div>
                             </div>
                         </article>
@@ -201,5 +203,18 @@ $coches = $conn->query($sql);
             </form>
         </section>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const carCards = document.querySelectorAll('.car-card');
+            carCards.forEach(card => {
+                card.addEventListener('click', (e) => {
+                    // Evitar que el click en los botones de acción expanda/contraiga la tarjeta
+                    if (!e.target.closest('button')) {
+                        card.classList.toggle('expanded');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
