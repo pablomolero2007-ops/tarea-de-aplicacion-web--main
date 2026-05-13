@@ -13,6 +13,15 @@ if ($conn->connect_error) {
 
 
 
+// Procesar petición de eliminación
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['action'] == 'delete' && isset($_POST['id'])) {
+    $coche_id = intval($_POST['id']);
+    $stmt_del = $conn->prepare("DELETE FROM coches WHERE id = ?");
+    $stmt_del->bind_param("i", $coche_id);
+    $stmt_del->execute();
+    $stmt_del->close();
+}
+
 // Obtener listado de coches
 $sql = "SELECT c.id, c.modelo, c.anio, c.color, c.precio, m.nombre as marca_nombre, m.pais_origen 
         FROM coches c 
@@ -83,9 +92,13 @@ $coches = $conn->query($sql);
                                         </div>
                                         <p><strong>Origen:</strong> <?php echo htmlspecialchars($row['pais_origen']); ?></p>
                                     </div>
-                                    <div class="car-card-actions">
-                                        <button class="btn btn-secondary btn-sm" title="Editar">✏️ Editar</button>
-                                        <button class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                                    <div class="car-card-actions" style="display: flex; gap: 1rem; align-items: center;">
+                                        <a href="editar_coche.php?id=<?php echo $row['id']; ?>" class="btn btn-secondary btn-sm" title="Editar" style="text-decoration: none;">✏️ Editar</a>
+                                        <form method="POST" action="index.php" style="margin: 0;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este vehículo del catálogo? Esta acción no se puede deshacer.');">
+                                            <input type="hidden" name="action" value="delete">
+                                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                            <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
