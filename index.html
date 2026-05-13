@@ -13,8 +13,8 @@
         <div class="nav-content">
             <h1 class="logo">AutoTracker</h1>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Listado</a></li>
-                <li><a href="nuevo_coche.html">Añadir Coche</a></li>
+                <li><a href="index.php" class="active">Listado</a></li>
+                <li><a href="nuevo_coche.php">Añadir Coche</a></li>
             </ul>
         </div>
     </nav>
@@ -54,9 +54,13 @@
                                 </div>
                                 <p><strong>Origen:</strong> Estados Unidos</p>
                             </div>
-                            <div class="car-card-actions">
-                                <button class="btn btn-secondary btn-sm" title="Editar">✏️ Editar</button>
-                                <button class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                            <div class="car-card-actions" style="display: flex; gap: 1rem; align-items: center;">
+                                <a href="editar_coche.php?id=1" class="btn btn-secondary btn-sm" title="Editar" style="text-decoration: none;">✏️ Editar</a>
+                                <form method="POST" action="index.php" style="margin: 0;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este vehículo del catálogo?');">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="id" value="1">
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -85,9 +89,13 @@
                                 </div>
                                 <p><strong>Origen:</strong> Alemania</p>
                             </div>
-                            <div class="car-card-actions">
-                                <button class="btn btn-secondary btn-sm" title="Editar">✏️ Editar</button>
-                                <button class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                            <div class="car-card-actions" style="display: flex; gap: 1rem; align-items: center;">
+                                <a href="editar_coche.php?id=2" class="btn btn-secondary btn-sm" title="Editar" style="text-decoration: none;">✏️ Editar</a>
+                                <form method="POST" action="index.php" style="margin: 0;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este vehículo del catálogo?');">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="id" value="2">
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -116,9 +124,13 @@
                                 </div>
                                 <p><strong>Origen:</strong> Japón</p>
                             </div>
-                            <div class="car-card-actions">
-                                <button class="btn btn-secondary btn-sm" title="Editar">✏️ Editar</button>
-                                <button class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                            <div class="car-card-actions" style="display: flex; gap: 1rem; align-items: center;">
+                                <a href="editar_coche.php?id=3" class="btn btn-secondary btn-sm" title="Editar" style="text-decoration: none;">✏️ Editar</a>
+                                <form method="POST" action="index.php" style="margin: 0;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este vehículo del catálogo?');">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="id" value="3">
+                                    <button type="submit" class="btn btn-danger btn-sm" title="Eliminar">🗑️ Eliminar</button>
+                                </form>
                             </div>
                         </div>
                     </div>
