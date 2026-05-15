@@ -1,11 +1,6 @@
-<?php
-// Configuración de la conexión a la base de datos
-$host = "localhost";
-$user = "root";
-$pass = "";
-$dbname = "concesionario";
+require_once 'config.php';
 
-$conn = new mysqli($host, $user, $pass, $dbname);
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);

@@ -25,10 +25,13 @@ Copia todos los archivos del repositorio en tu carpeta de servidor local (ej. `h
    - Haz clic en **Continuar**.
 
 ### 3. Configuración de Conexión
-Si los credenciales de tu MySQL son diferentes a los predeterminados (usuario: `root`, sin contraseña), asegúrate de actualizar las primeras líneas de los archivos `.php`:
-- `index.php`
-- `nuevo_coche.php`
-- `editar_coche.php`
+Para conectar con la base de datos:
+1. Copia el archivo `config.php.example` y cámbiale el nombre a `config.php`.
+2. Abre `config.php` y actualiza los valores según tu entorno local:
+   - `DB_HOST`: Normalmente `localhost`.
+   - `DB_USER`: Tu usuario de MySQL.
+   - `DB_PASS`: Tu contraseña de MySQL.
+   - `DB_NAME`: El nombre de la base de datos (`concesionario`).
 
 ### 4. Ejecutar
 Abre tu navegador y accede a: `http://localhost/nombre-de-tu-carpeta/index.php`.
