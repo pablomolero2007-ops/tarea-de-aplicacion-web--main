@@ -1,8 +1,8 @@
--- Script SQL para la creación de la base de datos de gestión de coches
-
--- Crear la base de datos si no existe
-CREATE DATABASE IF NOT EXISTS concesionario;
-USE concesionario;
+ -- Script SQL para la creación de la base de datos de gestión de coches
+ 
+ -- Crear la base de datos si no existe
+ -- CREATE DATABASE IF NOT EXISTS concesionario;
+ -- USE concesionario;
 
 -- Tabla de Marcas
 CREATE TABLE IF NOT EXISTS marcas (
