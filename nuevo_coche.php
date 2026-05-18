@@ -18,6 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $anio = $_POST['anio'];
     $color = $_POST['color'];
     $precio = $_POST['precio'];
+    $imagen = $_POST['imagen'];
     
     // Combinamos nombre y modelo, ya que la BBDD solo tiene un campo 'modelo'
     $modelo_completo = $nombre . " " . $modelo;
@@ -42,10 +43,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_marca->close();
 
     // Insertar el coche
-    $stmt_coche = $conn->prepare("INSERT INTO coches (modelo, anio, color, precio, marca_id) VALUES (?, ?, ?, ?, ?)");
-    $stmt_coche->bind_param("sisdi", $modelo_completo, $anio, $color, $precio, $marca_id);
+    $stmt_coche = $conn->prepare("INSERT INTO coches (modelo, anio, color, precio, imagen, marca_id) VALUES (?, ?, ?, ?, ?, ?)");
+    $stmt_coche->bind_param("sisdsi", $modelo_completo, $anio, $color, $precio, $imagen, $marca_id);
     if($stmt_coche->execute()) {
         $success = true;
+        // Redirigir al listado después de 2 segundos para mostrar mensaje o inmediatamente si prefieres
+        header("Refresh: 2; url=index.php");
     }
     $stmt_coche->close();
 }

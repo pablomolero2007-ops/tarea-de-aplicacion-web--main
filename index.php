@@ -16,10 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     $stmt_del->bind_param("i", $coche_id);
     $stmt_del->execute();
     $stmt_del->close();
+    // Redigir para evitar re-envío del formulario de eliminación
+    header("Location: index.php");
+    exit();
 }
 
 // Obtener listado de coches
-$sql = "SELECT c.id, c.modelo, c.anio, c.color, c.precio, m.nombre as marca_nombre, m.pais_origen 
+$sql = "SELECT c.id, c.modelo, c.anio, c.color, c.precio, c.imagen, m.nombre as marca_nombre, m.pais_origen 
         FROM coches c 
         JOIN marcas m ON c.marca_id = m.id 
         ORDER BY c.id DESC";
@@ -67,8 +70,10 @@ $coches = $conn->query($sql);
                         ?>
                         <article class="car-card">
                             <div class="car-card-img">
-                                <!-- Imagen estática de ejemplo ya que no hay campo de imagen en la db -->
-                                <img src="img/ford_mustang.png" alt="<?php echo htmlspecialchars($row['modelo']); ?>">
+                                <?php 
+                                $img_url = !empty($row['imagen']) ? htmlspecialchars($row['imagen']) : 'img/ford_mustang.png';
+                                ?>
+                                <img src="<?php echo $img_url; ?>" alt="<?php echo htmlspecialchars($row['modelo']); ?>">
                             </div>
                             <div class="car-card-content">
                                 <div class="car-card-header">
@@ -89,7 +94,6 @@ $coches = $conn->query($sql);
                                         <p><strong>Origen:</strong> <?php echo htmlspecialchars($row['pais_origen']); ?></p>
                                     </div>
                                     <div class="car-card-actions" style="display: flex; gap: 1rem; align-items: center;">
-                                        <a href="editar_coche.php?id=<?php echo $row['id']; ?>" class="btn btn-secondary btn-sm" title="Editar" style="text-decoration: none;">✏️ Editar</a>
                                         <form method="POST" action="index.php" style="margin: 0;" onsubmit="return confirm('¿Estás seguro de que quieres eliminar este vehículo del catálogo? Esta acción no se puede deshacer.');">
                                             <input type="hidden" name="action" value="delete">
                                             <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
