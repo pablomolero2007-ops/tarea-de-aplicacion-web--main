@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS coches (
 ) ENGINE=InnoDB;
 
 -- Insertar datos de ejemplo
-INSERT INTO marcas (nombre, pais_origen) VALUES ('Toyota', 'Japón'), ('Ford', 'EE.UU.'), ('Seat', 'España');
+INSERT INTO marcas (nombre, pais_origen) VALUES ('Honda', 'Japón'), ('Ford', 'EE.UU.'), ('Porsche', 'Alemania');
 
 INSERT INTO coches (modelo, anio, color, precio, imagen, marca_id) VALUES 
-('Corolla', 2022, 'Blanco', 25000.00, 'https://upload.wikimedia.org/wikipedia/commons/e/eb/2021_Toyota_Corolla_Ascent_Sport_hybrid_sedan_%282021-06-25%29_01.jpg', 1),
-('Mustang', 2021, 'Rojo', 45000.00, 'https://upload.wikimedia.org/wikipedia/commons/1/1d/2018_Ford_Mustang_GT_5.0.jpg', 2),
-('Ibiza', 2023, 'Azul', 18000.00, 'https://upload.wikimedia.org/wikipedia/commons/3/36/SEAT_Ibiza_Style_1.0_TGI_%28VI%29_%E2%80%93_Frontansicht%2C_28._Oktober_2017%2C_Essen.jpg', 3);
+('Civic', 2022, 'Blanco', 28000.00, 'img/honda_civic.png', 1),
+('Mustang', 2021, 'Rojo', 45000.00, 'img/ford_mustang.png', 2),
+('911', 2023, 'Negro', 130000.00, 'img/porsche_911.png', 3);

@@ -66,7 +66,22 @@ $coches = $conn->query($sql);
                     while($row = $coches->fetch_assoc()) {
                         // Tratar de mapear colores de la bd a colores válidos en CSS de forma sencilla si es un hex o usarlo directamente. 
                         // Para este ejemplo pasamos a minúsculas, funciona bien si es un color básico en inlgés pero visualmente quedará una cajita con color default o el especificado si usaste css codes.
-                        $color_badge = htmlspecialchars(strtolower($row['color']));
+                        $color_name_db = strtolower($row['color']);
+                        $color_translation = [
+                            'blanco' => 'white',
+                            'negro' => 'black',
+                            'rojo' => 'red',
+                            'azul' => 'blue',
+                            'gris' => 'gray',
+                            'verde' => 'green',
+                            'amarillo' => 'yellow',
+                            'naranja' => 'orange',
+                            'morado' => 'purple',
+                            'rosa' => 'pink',
+                            'plata' => '#C0C0C0',
+                            'dorado' => '#FFD700'
+                        ];
+                        $color_badge = isset($color_translation[$color_name_db]) ? $color_translation[$color_name_db] : $color_name_db;
                         ?>
                         <article class="car-card">
                             <div class="car-card-img">
@@ -84,7 +99,7 @@ $coches = $conn->query($sql);
                                     <div class="car-info">
                                         <p><strong>Marca:</strong> <?php echo htmlspecialchars($row['marca_nombre']); ?></p>
                                         <p><strong>Modelo:</strong> <?php echo htmlspecialchars($row['modelo']); ?></p>
-                                        <p><strong>Precio:</strong> <span class="price">$<?php echo number_format($row['precio'], 2); ?></span></p>
+                                        <p><strong>Precio:</strong> <span class="price">€<?php echo number_format($row['precio'], 2); ?></span></p>
                                         <div class="color-info">
                                             <strong>Color:</strong>
                                             <div class="color-value">
@@ -121,13 +136,7 @@ $coches = $conn->query($sql);
                 card.addEventListener('click', (e) => {
                     // Evitar que el click en los botones de acción expanda/contraiga la tarjeta
                     if (!e.target.closest('button')) {
-                        const isExpanded = card.classList.contains('expanded');
-                        // Cerrar todas
-                        carCards.forEach(c => c.classList.remove('expanded'));
-                        // Abrir la actual si no lo estaba
-                        if (!isExpanded) {
-                            card.classList.add('expanded');
-                        }
+                        card.classList.toggle('expanded');
                     }
                 });
             });

@@ -129,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
 
                     <div class="form-group">
-                        <label for="precio">Precio ($)</label>
+                        <label for="precio">Precio (€)</label>
                         <input type="number" id="precio" name="precio" placeholder="Ej. 55000" min="0" required>
                     </div>
 
