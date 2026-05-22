@@ -36,6 +36,11 @@ Para conectar con la base de datos:
 ### 4. Ejecutar
 Abre tu navegador y accede a: `http://localhost/nombre-de-tu-carpeta/index.php`.
 
+## 📺 Demostración en Video
+Puedes ver una demostración del funcionamiento de la aplicación en el siguiente enlace:
+👉 [Ver video de demostración](https://drive.google.com/file/d/185jFMMl39vczg1uIhUS04YQQ42ixq8s4/view?usp=sharing)
+
 ## 🌐 Producción 
 Puedes acceder a la versión desplegada de la aplicación en el siguiente enlace:
 👉 [Enlace al servidor en producción](https://alumno4.dwes.site/)
+
